@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="full-width">
+    <h1>
+      Posts
+      <button mat-mini-fab color="primary" routerLink="/admin/add-post">
+        <mat-icon>
+          add_circle_outline
+        </mat-icon>
+      </button>
+    </h1>
+  </div>
+  <div class="full-width">
+    <mat-card class="post-card" *ngFor="let post of posts; let i = index">
+      <mat-card-title>{{ post.title }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ post.body | sliceText : 50}}</p>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary" routerLink="/admin/edit-post/{{post._id}}">Edit</button>
+          <button mat-raised-button color="warn" (click)="delete(post._id, i)">Delete</button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
