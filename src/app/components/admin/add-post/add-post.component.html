@@ -1,0 +1,16 @@
+<div class="container">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="post-form">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput value="title" formControlName="title" required>
+    </mat-form-field>
+  
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Post body</mat-label>
+      <textarea matInput formControlName="body" required></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid">Add Post</button>
+    <button  mat-button color="warn" routerLink="/admin">Cancel</button>
+  </form>
+</div>
