@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="post-form">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Title</mat-label>
       <input matInput value="title" formControlName="title" required>

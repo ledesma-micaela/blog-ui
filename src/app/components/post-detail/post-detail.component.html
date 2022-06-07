@@ -1,5 +1,31 @@
 <div class="container">
   <h1>{{ post?.title }}</h1>
   <p>{{ post?.body }}</p>
+
   <button mat-raised-button color="primary" routerLink="/posts-list">Back</button>
+
+  <div class="container">
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput value="email" formControlName="email" required>
+      </mat-form-field>
+    
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Comment body</mat-label>
+        <textarea matInput formControlName="body" required></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="!commentForm.valid">Add Comment</button>
+    </form>
+  </div>
+
+  <div *ngIf="comments.length" class="container">
+    <h2>Comments</h2>
+    <div *ngFor="let comment of comments">
+      <h3>Email: {{ comment.email }}</h3>
+      <p>Comment: {{ comment.body }}</p>
+      <hr>
+    </div>
+  </div>
 </div>
